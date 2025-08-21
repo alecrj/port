@@ -8,7 +8,7 @@
     <!-- Enhanced Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
     
     <!-- GSAP Free Plugins Only -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -217,21 +217,6 @@
             padding: clamp(5rem, 10vh, 7rem) clamp(1.5rem, 4vw, 3rem) clamp(1.5rem, 3vh, 2rem);
         }
 
-        .hero::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                radial-gradient(circle at 1px 1px, rgba(255, 107, 53, 0.05) 1px, transparent 0);
-            background-size: 60px 60px;
-            opacity: 0.3;
-            z-index: 1;
-            will-change: transform;
-        }
-
         .hero-content {
             max-width: 1200px;
             width: 100%;
@@ -253,24 +238,21 @@
         }
 
         .hero-title {
-            font-size: clamp(2.5rem, 8vw, 6rem);
-            font-weight: 300;
-            line-height: 0.9;
-            letter-spacing: -0.02em;
+            font-size: clamp(3rem, 12vw, 8rem);
+            font-weight: 900;
+            line-height: 0.85;
+            letter-spacing: -0.04em;
             margin-bottom: clamp(1.5rem, 3vw, 2rem);
             position: relative;
             will-change: transform;
+            text-transform: uppercase;
         }
 
         .hero-title .line {
             display: block;
             position: relative;
             will-change: transform;
-        }
-
-        .hero-title .char {
-            display: inline-block;
-            will-change: transform;
+            overflow: hidden;
         }
 
         .hero-title .line:nth-child(2) {
@@ -282,20 +264,22 @@
         }
 
         .hero-subtitle {
-            font-size: clamp(0.85rem, 1.6vw, 1rem);
-            font-weight: 400;
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            font-weight: 500;
             margin-bottom: clamp(0.8rem, 1.5vh, 1rem);
-            opacity: 0.8;
+            opacity: 0.9;
             letter-spacing: 0.02em;
             will-change: transform;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
         }
 
         .hero-description {
-            max-width: 480px;
+            max-width: 500px;
             margin: 0 auto;
-            font-size: clamp(0.85rem, 1.4vw, 0.95rem);
+            font-size: clamp(0.9rem, 1.6vw, 1rem);
             font-weight: 400;
-            line-height: 1.5;
+            line-height: 1.6;
             opacity: 0.7;
             color: var(--text-gray);
             will-change: transform;
@@ -307,16 +291,16 @@
             align-items: center;
             gap: 0.6rem;
             margin-top: clamp(1.2rem, 2.5vh, 1.8rem);
-            padding: 0.7rem 1.3rem;
+            padding: 0.8rem 1.5rem;
             background: transparent;
-            border: 1px solid var(--primary);
+            border: 2px solid var(--primary);
             color: var(--light);
             text-decoration: none;
-            font-size: 0.8rem;
-            font-weight: 500;
+            font-size: 0.85rem;
+            font-weight: 600;
             letter-spacing: 0.08em;
             text-transform: uppercase;
-            border-radius: 25px;
+            border-radius: 30px;
             transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             position: relative;
             overflow: hidden;
@@ -354,6 +338,94 @@
             background: var(--gradient);
             z-index: 9999;
             will-change: width;
+        }
+
+        /* BIG MORPHING TEXT SECTION */
+        .big-text-section {
+            min-height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: var(--darker);
+            padding: clamp(4rem, 8vw, 6rem) clamp(1.5rem, 4vw, 3rem);
+        }
+
+        .big-text-container {
+            text-align: center;
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .morphing-text {
+            font-size: clamp(4rem, 15vw, 12rem);
+            font-weight: 900;
+            line-height: 0.8;
+            letter-spacing: -0.05em;
+            text-transform: uppercase;
+            will-change: transform;
+            position: relative;
+        }
+
+        .morphing-text .word {
+            display: block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .morphing-text .word span {
+            display: inline-block;
+            will-change: transform;
+        }
+
+        /* FROM LITTLE IDEA TO SOMETHING BIG SECTION - SCROLL JACKING */
+        .idea-section {
+            min-height: 500vh;
+            position: relative;
+            background: var(--dark);
+            overflow: hidden;
+        }
+
+        .idea-container {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .idea-object {
+            width: 20px;
+            height: 20px;
+            background: var(--gradient);
+            border-radius: 50%;
+            margin-bottom: 2rem;
+            will-change: transform;
+            box-shadow: 0 0 50px rgba(255, 107, 53, 0.3);
+        }
+
+        .idea-text {
+            font-size: clamp(1.5rem, 4vw, 3rem);
+            font-weight: 700;
+            text-align: center;
+            line-height: 1.2;
+            will-change: transform;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+        }
+
+        .idea-text .growing-word {
+            color: var(--light);
+            background: var(--gradient);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% 100%;
+            font-weight: 800;
         }
 
         /* Section Base Styles */
@@ -397,12 +469,13 @@
         }
 
         .section-title {
-            font-size: clamp(2rem, 4vw, 2.5rem);
-            font-weight: 300;
-            line-height: 1.1;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 800;
+            line-height: 0.9;
             margin-bottom: 1.5rem;
-            letter-spacing: -0.01em;
+            letter-spacing: -0.02em;
             will-change: transform;
+            text-transform: uppercase;
         }
 
         .section-description {
@@ -414,65 +487,35 @@
             will-change: transform;
         }
 
-        /* About Section */
-        .about {
+        /* Vision Section */
+        .vision {
             background: var(--gray);
             position: relative;
         }
 
-        .about-text {
-            font-size: clamp(1.4rem, 3vw, 1.8rem);
-            font-weight: 300;
-            line-height: 1.3;
+        .vision-text {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 600;
+            line-height: 1.2;
             margin-bottom: clamp(2rem, 4vw, 2.5rem);
             letter-spacing: -0.01em;
             will-change: transform;
         }
 
-        .about-text .highlight {
+        .vision-text .highlight {
             background: var(--gradient);
             background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .about-description {
-            font-size: clamp(0.9rem, 1.6vw, 1rem);
+        .vision-description {
+            font-size: clamp(1rem, 1.8vw, 1.1rem);
             line-height: 1.7;
             opacity: 0.8;
             margin-bottom: clamp(1.5rem, 3vw, 2rem);
             color: var(--text-gray);
             will-change: transform;
-        }
-
-        .about-stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .stat-item {
-            text-align: center;
-            padding: 1rem 0;
-            border-top: 1px solid var(--border);
-            will-change: transform;
-        }
-
-        .stat-number {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: clamp(1.2rem, 2.5vw, 1.5rem);
-            font-weight: 600;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-label {
-            font-size: 0.8rem;
-            opacity: 0.7;
-            color: var(--text-gray);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
         }
 
         /* Specializations */
@@ -496,12 +539,13 @@
         }
 
         .specializations-title {
-            font-size: clamp(2.5rem, 5vw, 3.5rem);
-            font-weight: 300;
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 800;
             margin-bottom: 2rem;
-            line-height: 1.1;
-            letter-spacing: -0.02em;
+            line-height: 0.9;
+            letter-spacing: -0.03em;
             will-change: transform;
+            text-transform: uppercase;
         }
 
         .specializations-subtitle {
@@ -531,9 +575,9 @@
             height: 500px;
             margin: 4rem auto;
             max-width: 900px;
-            border: 1px solid var(--border);
+            border: 2px solid var(--border);
             border-radius: 20px;
-            background: rgba(255, 107, 53, 0.01);
+            background: rgba(255, 107, 53, 0.02);
             overflow: hidden;
             will-change: transform;
         }
@@ -545,7 +589,7 @@
             align-items: center;
             justify-content: center;
             font-size: clamp(0.7rem, 1.2vw, 0.85rem);
-            font-weight: 500;
+            font-weight: 600;
             letter-spacing: 0.05em;
             cursor: grab;
             user-select: none;
@@ -553,6 +597,7 @@
             backdrop-filter: blur(10px);
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
             will-change: transform;
+            text-transform: uppercase;
         }
 
         .physics-ball:active {
@@ -562,7 +607,7 @@
         .ball-web {
             width: 120px;
             height: 120px;
-            background: rgba(255, 107, 53, 0.08);
+            background: rgba(255, 107, 53, 0.1);
             border-color: var(--primary);
             color: var(--primary);
         }
@@ -570,7 +615,7 @@
         .ball-brand {
             width: 100px;
             height: 100px;
-            background: rgba(247, 147, 30, 0.08);
+            background: rgba(247, 147, 30, 0.1);
             border-color: var(--secondary);
             color: var(--secondary);
         }
@@ -578,7 +623,7 @@
         .ball-ui {
             width: 110px;
             height: 110px;
-            background: rgba(255, 200, 87, 0.08);
+            background: rgba(255, 200, 87, 0.1);
             border-color: var(--accent);
             color: var(--accent);
         }
@@ -586,7 +631,7 @@
         .ball-motion {
             width: 95px;
             height: 95px;
-            background: rgba(255, 107, 53, 0.12);
+            background: rgba(255, 107, 53, 0.15);
             border-color: var(--primary);
             color: var(--light);
         }
@@ -594,24 +639,24 @@
         .ball-strategy {
             width: 105px;
             height: 105px;
-            background: rgba(247, 147, 30, 0.12);
+            background: rgba(247, 147, 30, 0.15);
             border-color: var(--secondary);
             color: var(--light);
         }
 
-        /* Experiences Section */
-        .experiences {
+        /* Projects Section */
+        .projects {
             background: var(--dark);
             position: relative;
         }
 
-        .experiences-grid {
+        .projects-grid {
             display: grid;
             gap: 0;
         }
 
-        .experience-item {
-            padding: clamp(2rem, 4vw, 2.5rem) 0;
+        .project-item {
+            padding: clamp(2.5rem, 5vw, 3rem) 0;
             border-top: 1px solid var(--border);
             cursor: pointer;
             transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -620,43 +665,43 @@
             will-change: transform;
         }
 
-        .experience-item::before {
+        .project-item::before {
             content: '';
             position: absolute;
             left: -100%;
             top: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 107, 53, 0.02), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255, 107, 53, 0.03), transparent);
             transition: left 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             z-index: 1;
         }
 
-        .experience-item:hover::before {
+        .project-item:hover::before {
             left: 100%;
         }
 
-        .experience-item::after {
+        .project-item::after {
             content: '';
             position: absolute;
             left: 0;
             top: 0;
             width: 0;
-            height: 1px;
+            height: 2px;
             background: var(--gradient);
             transition: width 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             z-index: 2;
         }
 
-        .experience-item:hover::after {
+        .project-item:hover::after {
             width: 100%;
         }
 
-        .experience-item:hover {
-            transform: translateX(clamp(10px, 2vw, 20px));
+        .project-item:hover {
+            transform: translateX(clamp(15px, 3vw, 25px));
         }
 
-        .experience-header {
+        .project-header {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
@@ -667,76 +712,78 @@
             z-index: 3;
         }
 
-        .experience-number {
+        .project-number {
             font-family: 'JetBrains Mono', monospace;
-            font-size: clamp(0.9rem, 1.6vw, 1rem);
+            font-size: clamp(1rem, 2vw, 1.2rem);
             color: var(--primary);
-            font-weight: 400;
+            font-weight: 500;
             opacity: 0.8;
-            min-width: 50px;
+            min-width: 60px;
             will-change: transform;
         }
 
-        .experience-title {
-            font-size: clamp(1.5rem, 3vw, 2rem);
-            font-weight: 300;
+        .project-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
             flex-grow: 1;
             margin-left: clamp(1rem, 2vw, 1.5rem);
-            line-height: 1.2;
+            line-height: 1.1;
             letter-spacing: -0.01em;
             will-change: transform;
         }
 
-        .experience-arrow {
-            font-size: 1.2rem;
+        .project-arrow {
+            font-size: 1.5rem;
             transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             opacity: 0.5;
             color: var(--primary);
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 35px;
-            height: 35px;
-            border: 1px solid var(--border);
+            width: 40px;
+            height: 40px;
+            border: 2px solid var(--border);
             border-radius: 50%;
             will-change: transform;
         }
 
-        .experience-item:hover .experience-arrow {
-            transform: translateX(6px) rotate(45deg);
+        .project-item:hover .project-arrow {
+            transform: translateX(8px) rotate(45deg);
             opacity: 1;
             border-color: var(--primary);
         }
 
-        .experience-description {
-            font-size: clamp(0.9rem, 1.6vw, 1rem);
+        .project-description {
+            font-size: clamp(1rem, 1.8vw, 1.1rem);
             line-height: 1.6;
             opacity: 0.7;
-            max-width: 500px;
-            margin-left: clamp(3rem, 5vw, 4rem);
+            max-width: 600px;
+            margin-left: clamp(4rem, 7vw, 5rem);
             position: relative;
             z-index: 3;
             color: var(--text-gray);
             will-change: transform;
         }
 
-        .experience-tech {
-            margin-top: 1rem;
-            margin-left: clamp(3rem, 5vw, 4rem);
+        .project-tech {
+            margin-top: 1.5rem;
+            margin-left: clamp(4rem, 7vw, 5rem);
             display: flex;
             flex-wrap: wrap;
-            gap: 0.5rem;
+            gap: 0.8rem;
         }
 
         .tech-tag {
-            padding: 0.3rem 0.8rem;
-            background: rgba(255, 107, 53, 0.08);
+            padding: 0.4rem 1rem;
+            background: rgba(255, 107, 53, 0.1);
             border: 1px solid var(--border);
-            border-radius: 20px;
-            font-size: 0.8rem;
+            border-radius: 25px;
+            font-size: 0.85rem;
             color: var(--primary);
-            font-weight: 400;
+            font-weight: 500;
             will-change: transform;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
 
         /* Contact Section */
@@ -752,27 +799,28 @@
 
         .contact-content {
             text-align: center;
-            max-width: 800px;
+            max-width: 900px;
             width: 100%;
             position: relative;
             z-index: 2;
         }
 
         .contact-title {
-            font-size: clamp(2.5rem, 6vw, 4rem);
-            font-weight: 300;
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 800;
             margin-bottom: clamp(2rem, 4vw, 2.5rem);
-            line-height: 1.1;
-            letter-spacing: -0.02em;
+            line-height: 0.9;
+            letter-spacing: -0.03em;
             will-change: transform;
+            text-transform: uppercase;
         }
 
         .contact-description {
-            font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+            font-size: clamp(1rem, 2vw, 1.2rem);
             line-height: 1.6;
             opacity: 0.7;
             margin-bottom: clamp(2.5rem, 5vw, 3rem);
-            max-width: 500px;
+            max-width: 600px;
             margin-left: auto;
             margin-right: auto;
             color: var(--text-gray);
@@ -782,18 +830,18 @@
         .contact-email {
             display: inline-flex;
             align-items: center;
-            gap: 0.75rem;
-            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
-            font-weight: 400;
+            gap: 1rem;
+            font-size: clamp(1.2rem, 3vw, 1.6rem);
+            font-weight: 600;
             color: var(--light);
             text-decoration: none;
             position: relative;
             transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             letter-spacing: 0.02em;
-            padding: 1rem 2rem;
-            border: 1px solid var(--border);
-            border-radius: 40px;
-            background: rgba(255, 107, 53, 0.03);
+            padding: 1.2rem 2.5rem;
+            border: 2px solid var(--border);
+            border-radius: 50px;
+            background: rgba(255, 107, 53, 0.05);
             backdrop-filter: blur(20px);
             will-change: transform;
         }
@@ -807,7 +855,7 @@
             height: 100%;
             background: var(--gradient);
             opacity: 0;
-            border-radius: 40px;
+            border-radius: 50px;
             transition: opacity 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             z-index: -1;
         }
@@ -824,7 +872,7 @@
 
         /* Footer */
         .footer {
-            padding: clamp(2rem, 4vw, 3rem) clamp(1.5rem, 4vw, 3rem);
+            padding: clamp(3rem, 5vw, 4rem) clamp(1.5rem, 4vw, 3rem);
             background: var(--darker);
             border-top: 1px solid var(--border);
         }
@@ -840,7 +888,7 @@
         }
 
         .footer-text {
-            font-size: clamp(0.75rem, 1.4vw, 0.85rem);
+            font-size: clamp(0.8rem, 1.5vw, 0.9rem);
             opacity: 0.6;
             font-weight: 400;
             color: var(--text-gray);
@@ -848,16 +896,16 @@
 
         .footer-links {
             display: flex;
-            gap: clamp(1.2rem, 2.5vw, 2rem);
+            gap: clamp(1.5rem, 3vw, 2.5rem);
             flex-wrap: wrap;
         }
 
         .footer-link {
-            font-size: clamp(0.75rem, 1.4vw, 0.85rem);
+            font-size: clamp(0.8rem, 1.5vw, 0.9rem);
             color: var(--text-gray);
             text-decoration: none;
             transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            font-weight: 400;
+            font-weight: 500;
             position: relative;
             padding: 0.5rem 0;
             will-change: transform;
@@ -869,7 +917,7 @@
             bottom: 0;
             left: 0;
             width: 0;
-            height: 1px;
+            height: 2px;
             background: var(--primary);
             transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
@@ -910,6 +958,14 @@
                 width: 70px;
                 height: 70px;
             }
+
+            .big-text-section {
+                min-height: 80vh;
+            }
+
+            .idea-section {
+                min-height: 300vh;
+            }
         }
     </style>
 </head>
@@ -932,7 +988,7 @@
     <div class="progress"></div>
 
     <!-- Section Counter -->
-    <div class="section-counter">01 / 05</div>
+    <div class="section-counter">01 / 07</div>
 
     <!-- Simple Navigation -->
     <nav class="nav magnetic">ALEC.RJ</nav>
@@ -942,63 +998,86 @@
         <div class="hero-content">
             <div class="hero-label">DIGITAL EXPERIENCE DESIGNER</div>
             <h1 class="hero-title">
-                <div class="line">TRANSFORMING</div>
-                <div class="line">BRANDS INTO</div>
-                <div class="line">EXPERIENCES</div>
+                <div class="line">CRAFTING</div>
+                <div class="line">DIGITAL</div>
+                <div class="line">EXCELLENCE</div>
             </h1>
             <h2 class="hero-subtitle">
-                ELEVATED DIGITAL PRESENCE FOR FORWARD-THINKING COMPANIES
+                TURNING VISION INTO REALITY
             </h2>
             <p class="hero-description">
-                I partner with ambitious brands to create digital experiences that captivate audiences, 
-                drive engagement, and deliver measurable business results through strategic design.
+                Fresh perspective meets boundless creativity. I transform ideas into compelling 
+                digital experiences that captivate audiences and drive meaningful connections.
             </p>
-            <a href="#contact" class="cta-button magnetic" data-cursor="Let's talk">
-                <span>Start Your Project</span>
+            <a href="#contact" class="cta-button magnetic" data-cursor="Let's create">
+                <span>Start Something</span>
                 <span>→</span>
             </a>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section class="about section" id="about">
+    <!-- Big Morphing Text Section -->
+    <section class="big-text-section">
+        <div class="big-text-container">
+            <div class="morphing-text">
+                <div class="word">
+                    <span>BOLD</span>
+                </div>
+                <div class="word">
+                    <span>IDEAS</span>
+                </div>
+                <div class="word">
+                    <span>DESERVE</span>
+                </div>
+                <div class="word">
+                    <span>BOLD</span>
+                </div>
+                <div class="word">
+                    <span>EXECUTION</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- From Little Idea to Something Big Section -->
+    <section class="idea-section">
+        <div class="idea-container">
+            <div class="idea-object"></div>
+            <div class="idea-text">
+                <div>FROM A</div>
+                <div>LITTLE <span class="growing-word">IDEA</span></div>
+                <div>TO SOMETHING</div>
+                <div>EXTRAORDINARY</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vision Section -->
+    <section class="vision section" id="vision">
         <div class="section-content">
             <div class="section-header">
-                <div class="section-number">02 / 05</div>
-                <h2 class="section-title">ABOUT</h2>
+                <div class="section-number">02 / 06</div>
+                <h2 class="section-title">VISION</h2>
                 <p class="section-description">
-                    Delivering digital experiences that transform brands and drive business growth.
+                    Every great project starts with an unwavering vision and the passion to bring it to life.
                 </p>
             </div>
             <div>
-                <h3 class="about-text">
-                    YOUR BRAND DESERVES AN 
-                    <span class="highlight">UNFORGETTABLE</span> DIGITAL PRESENCE
+                <h3 class="vision-text">
+                    I BELIEVE IN THE 
+                    <span class="highlight">POWER OF DESIGN</span> 
+                    TO TRANSFORM IDEAS
                 </h3>
-                <p class="about-description">
-                    I specialize in creating digital experiences that don't just look stunning—they 
-                    deliver results. My clients see increased engagement, higher conversion rates, 
-                    and stronger brand recognition through thoughtfully crafted digital solutions.
+                <p class="vision-description">
+                    Design isn't just what it looks like—it's how it works, how it feels, and how it 
+                    connects with people. I approach every project with curiosity, creativity, and 
+                    an obsession for details that matter.
                 </p>
-                <p class="about-description">
-                    From startups seeking to make their mark to established companies ready to 
-                    evolve, I help brands create digital experiences that resonate with their 
-                    audience and drive meaningful business outcomes.
+                <p class="vision-description">
+                    Whether you're launching your first product or reimagining an entire brand, 
+                    I'm here to push boundaries and create something that truly stands out in 
+                    today's digital landscape.
                 </p>
-                <div class="about-stats">
-                    <div class="stat-item">
-                        <div class="stat-number" data-count="50">0</div>
-                        <div class="stat-label">Projects Delivered</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number" data-count="98">0</div>
-                        <div class="stat-label">Client Satisfaction</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number" data-count="25">0</div>
-                        <div class="stat-label">Brands Transformed</div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -1007,12 +1086,12 @@
     <section class="specializations" id="specializations">
         <div class="specializations-content">
             <div class="specializations-header">
-                <div class="section-number">03 / 05</div>
-                <h2 class="specializations-title">AREAS OF EXPERTISE</h2>
+                <div class="section-number">03 / 06</div>
+                <h2 class="specializations-title">SKILLS</h2>
                 <div class="specializations-subtitle">CLICK & DRAG</div>
                 <p class="specializations-description">
-                    Interactive skill balls that drop into the playground and bounce off each other. 
-                    Drag them around to explore my different areas of expertise in digital design.
+                    Interactive skill spheres that showcase my areas of expertise. 
+                    Drag them around and watch the physics come alive.
                 </p>
             </div>
             
@@ -1026,90 +1105,91 @@
         </div>
     </section>
 
-    <!-- Experiences Section -->
-    <section class="experiences section" id="experiences">
+    <!-- Projects Section -->
+    <section class="projects section" id="projects">
         <div class="section-content">
             <div class="section-header">
-                <div class="section-number">04 / 05</div>
-                <h2 class="section-title">WORK</h2>
+                <div class="section-number">04 / 06</div>
+                <h2 class="section-title">CONCEPTS</h2>
                 <p class="section-description">
-                    Client success stories and the transformative digital experiences we created together.
+                    Passion projects and creative explorations that showcase what's possible 
+                    when imagination meets execution.
                 </p>
             </div>
-            <div class="experiences-grid">
-                <div class="experience-item magnetic" data-cursor="View Case Study">
-                    <div class="experience-header">
-                        <div class="experience-number">01</div>
-                        <div class="experience-title">E-commerce Revolution</div>
-                        <div class="experience-arrow">↗</div>
+            <div class="projects-grid">
+                <div class="project-item magnetic" data-cursor="Explore Concept">
+                    <div class="project-header">
+                        <div class="project-number">01</div>
+                        <div class="project-title">E-Commerce Reimagined</div>
+                        <div class="project-arrow">↗</div>
                     </div>
-                    <div class="experience-description">
-                        Transformed an outdated online store into a conversion powerhouse. 
-                        Client achieved 340% increase in sales and 60% improvement in user 
-                        engagement through strategic redesign and optimized user journeys.
+                    <div class="project-description">
+                        A bold reimagining of online retail that prioritizes user experience 
+                        and emotional connection. Features immersive product discovery and 
+                        seamless checkout flows that feel effortless.
                     </div>
-                    <div class="experience-tech">
-                        <span class="tech-tag">+340% Sales</span>
-                        <span class="tech-tag">+60% Engagement</span>
-                        <span class="tech-tag">Mobile-First</span>
-                        <span class="tech-tag">Performance Optimized</span>
-                    </div>
-                </div>
-
-                <div class="experience-item magnetic" data-cursor="View Case Study">
-                    <div class="experience-header">
-                        <div class="experience-number">02</div>
-                        <div class="experience-title">Brand Digital Transformation</div>
-                        <div class="experience-arrow">↗</div>
-                    </div>
-                    <div class="experience-description">
-                        Elevated a traditional business into the digital age with a complete 
-                        brand refresh and web presence. Result: 500% increase in qualified leads 
-                        and recognition as industry leader in digital innovation.
-                    </div>
-                    <div class="experience-tech">
-                        <span class="tech-tag">+500% Leads</span>
-                        <span class="tech-tag">Brand Recognition</span>
-                        <span class="tech-tag">Digital Strategy</span>
-                        <span class="tech-tag">Lead Generation</span>
+                    <div class="project-tech">
+                        <span class="tech-tag">Next.js</span>
+                        <span class="tech-tag">Framer Motion</span>
+                        <span class="tech-tag">Headless Commerce</span>
+                        <span class="tech-tag">GSAP</span>
                     </div>
                 </div>
 
-                <div class="experience-item magnetic" data-cursor="View Case Study">
-                    <div class="experience-header">
-                        <div class="experience-number">03</div>
-                        <div class="experience-title">Startup Launch Success</div>
-                        <div class="experience-arrow">↗</div>
+                <div class="project-item magnetic" data-cursor="Explore Concept">
+                    <div class="project-header">
+                        <div class="project-number">02</div>
+                        <div class="project-title">Brand Identity System</div>
+                        <div class="project-arrow">↗</div>
                     </div>
-                    <div class="experience-description">
-                        Launched a tech startup's digital presence from concept to market leader. 
-                        Created compelling brand story and user experience that attracted 
-                        $2M in funding and 10,000+ active users in first quarter.
+                    <div class="project-description">
+                        A comprehensive brand system that adapts across all touchpoints. 
+                        From logo to web presence, every element works together to tell 
+                        a cohesive and compelling brand story.
                     </div>
-                    <div class="experience-tech">
-                        <span class="tech-tag">$2M Funding</span>
-                        <span class="tech-tag">10K+ Users</span>
-                        <span class="tech-tag">Market Leader</span>
-                        <span class="tech-tag">Growth Strategy</span>
+                    <div class="project-tech">
+                        <span class="tech-tag">Brand Strategy</span>
+                        <span class="tech-tag">Visual Identity</span>
+                        <span class="tech-tag">Web Design</span>
+                        <span class="tech-tag">Motion Graphics</span>
                     </div>
                 </div>
 
-                <div class="experience-item magnetic" data-cursor="View Case Study">
-                    <div class="experience-header">
-                        <div class="experience-number">04</div>
-                        <div class="experience-title">Enterprise Platform Redesign</div>
-                        <div class="experience-arrow">↗</div>
+                <div class="project-item magnetic" data-cursor="Explore Concept">
+                    <div class="project-header">
+                        <div class="project-number">03</div>
+                        <div class="project-title">SaaS Dashboard Evolution</div>
+                        <div class="project-arrow">↗</div>
                     </div>
-                    <div class="experience-description">
-                        Redesigned complex enterprise platform improving user productivity 
-                        by 75% and reducing training time by 50%. Enhanced user satisfaction 
-                        scores from 3.2 to 8.7 out of 10 through intuitive interface design.
+                    <div class="project-description">
+                        Transforming complex data into intuitive insights. This dashboard 
+                        concept makes enterprise software feel as smooth and engaging 
+                        as consumer apps while maintaining professional utility.
                     </div>
-                    <div class="experience-tech">
-                        <span class="tech-tag">+75% Productivity</span>
-                        <span class="tech-tag">-50% Training Time</span>
-                        <span class="tech-tag">8.7/10 Satisfaction</span>
-                        <span class="tech-tag">Enterprise Scale</span>
+                    <div class="project-tech">
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">Data Visualization</span>
+                        <span class="tech-tag">UX Research</span>
+                        <span class="tech-tag">Design Systems</span>
+                    </div>
+                </div>
+
+                <div class="project-item magnetic" data-cursor="Explore Concept">
+                    <div class="project-header">
+                        <div class="project-number">04</div>
+                        <div class="project-title">Interactive Portfolio</div>
+                        <div class="project-arrow">↗</div>
+                    </div>
+                    <div class="project-description">
+                        A living, breathing portfolio that showcases work through immersive 
+                        storytelling. Every scroll reveals new surprises while maintaining 
+                        performance and accessibility standards.
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-tag">GSAP</span>
+                        <span class="tech-tag">WebGL</span>
+                        <span class="tech-tag">Progressive Enhancement</span>
+                        <span class="tech-tag">Performance</span>
                     </div>
                 </div>
             </div>
@@ -1119,13 +1199,13 @@
     <!-- Contact Section -->
     <section class="contact" id="contact">
         <div class="contact-content">
-            <h2 class="contact-title">READY TO TRANSFORM YOUR BRAND?</h2>
+            <h2 class="contact-title">LET'S CREATE TOGETHER</h2>
             <p class="contact-description">
-                Let's create a digital experience that elevates your brand, captivates your 
-                audience, and delivers the business results you're looking for.
+                Ready to turn your vision into reality? I'm excited to collaborate on projects 
+                that push boundaries and create meaningful impact.
             </p>
-            <a href="mailto:contact@alecrj.com" class="contact-email magnetic" data-cursor="Send Email">
-                <span>contact@alecrj.com</span>
+            <a href="mailto:hello@alecrj.com" class="contact-email magnetic" data-cursor="Send Message">
+                <span>hello@alecrj.com</span>
                 <span>↗</span>
             </a>
         </div>
@@ -1134,12 +1214,12 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
-            <div class="footer-text">© 2025 Alec RJ. All rights reserved.</div>
+            <div class="footer-text">© 2025 Alec RJ. Crafted with passion.</div>
             <div class="footer-links">
                 <a href="#" class="footer-link magnetic" data-cursor="LinkedIn">LinkedIn</a>
                 <a href="#" class="footer-link magnetic" data-cursor="GitHub">GitHub</a>
                 <a href="#" class="footer-link magnetic" data-cursor="Dribbble">Dribbble</a>
-                <a href="#" class="footer-link magnetic" data-cursor="Twitter">Twitter</a>
+                <a href="#" class="footer-link magnetic" data-cursor="Behance">Behance</a>
             </div>
         </div>
     </footer>
@@ -1483,150 +1563,165 @@
             });
         }
 
-        // Scroll-driven animations (SCRUB ANIMATIONS)
+        // Scroll-driven animations with EARLIER triggers
         function initScrollAnimations() {
-            // Hero animations - scrub with scroll
+            // Hero animations - much earlier triggers
             ScrollTrigger.create({
                 trigger: ".hero",
                 start: "top bottom",
                 end: "bottom top",
-                scrub: 1,
+                scrub: 0.5,
                 animation: gsap.timeline()
-                    .fromTo(".hero-label", { y: 100, opacity: 0 }, { y: 0, opacity: 1 })
-                    .fromTo(".hero-title .line", { y: 150, opacity: 0 }, { y: 0, opacity: 1, stagger: 0.1 }, 0.2)
-                    .fromTo(".hero-subtitle", { y: 80, opacity: 0 }, { y: 0, opacity: 1 }, 0.4)
-                    .fromTo(".hero-description", { y: 60, opacity: 0 }, { y: 0, opacity: 1 }, 0.5)
-                    .fromTo(".cta-button", { y: 40, opacity: 0, scale: 0.9 }, { y: 0, opacity: 1, scale: 1 }, 0.6)
+                    .fromTo(".hero-label", { y: 50, opacity: 0 }, { y: 0, opacity: 1 })
+                    .fromTo(".hero-title .line", { y: 100, opacity: 0 }, { y: 0, opacity: 1, stagger: 0.1 }, 0.1)
+                    .fromTo(".hero-subtitle", { y: 60, opacity: 0 }, { y: 0, opacity: 1 }, 0.3)
+                    .fromTo(".hero-description", { y: 40, opacity: 0 }, { y: 0, opacity: 1 }, 0.4)
+                    .fromTo(".cta-button", { y: 30, opacity: 0, scale: 0.95 }, { y: 0, opacity: 1, scale: 1 }, 0.5)
             });
 
-            // Hero background grid animation
+            // Big morphing text section - Fixed timing so it's readable while in view
             ScrollTrigger.create({
-                trigger: ".hero",
-                start: "top bottom",
-                end: "bottom top",
-                scrub: 2,
-                animation: gsap.fromTo(".hero::after", 
-                    { rotation: 0, scale: 1 }, 
-                    { rotation: 45, scale: 1.2 }
-                )
-            });
-
-            // About section scrub animations
-            ScrollTrigger.create({
-                trigger: ".about",
-                start: "top bottom",
-                end: "bottom top",
-                scrub: 1,
+                trigger: ".big-text-section",
+                start: "top 80%",
+                end: "bottom 20%",
+                scrub: 0.5,
                 animation: gsap.timeline()
-                    .fromTo(".about .section-number", { x: -100, opacity: 0 }, { x: 0, opacity: 0.6 })
-                    .fromTo(".about .section-title", { y: 100, opacity: 0 }, { y: 0, opacity: 1 }, 0.1)
-                    .fromTo(".about .section-description", { x: 100, opacity: 0 }, { x: 0, opacity: 0.7 }, 0.2)
-                    .fromTo(".about-text", { y: 80, opacity: 0 }, { y: 0, opacity: 1 }, 0.3)
-                    .fromTo(".about-description", { y: 60, opacity: 0, stagger: 0.1 }, { y: 0, opacity: 0.8, stagger: 0.1 }, 0.4)
-                    .fromTo(".stat-item", { y: 40, opacity: 0, stagger: 0.1 }, { y: 0, opacity: 1, stagger: 0.1 }, 0.5)
+                    .fromTo(".morphing-text .word:nth-child(1) span", 
+                        { y: 100, opacity: 0, rotationX: -45 }, 
+                        { y: 0, opacity: 1, rotationX: 0 })
+                    .fromTo(".morphing-text .word:nth-child(2) span", 
+                        { y: 100, opacity: 0, rotationX: -45 }, 
+                        { y: 0, opacity: 1, rotationX: 0 }, 0.1)
+                    .fromTo(".morphing-text .word:nth-child(3) span", 
+                        { y: 100, opacity: 0, rotationX: -45 }, 
+                        { y: 0, opacity: 1, rotationX: 0 }, 0.2)
+                    .fromTo(".morphing-text .word:nth-child(4) span", 
+                        { y: 100, opacity: 0, rotationX: -45 }, 
+                        { y: 0, opacity: 1, rotationX: 0 }, 0.3)
+                    .fromTo(".morphing-text .word:nth-child(5) span", 
+                        { y: 100, opacity: 0, rotationX: -45 }, 
+                        { y: 0, opacity: 1, rotationX: 0 }, 0.4)
             });
 
-            // Specializations scrub animations
+            // From little idea to something big - SCROLL JACKING EFFECT!
             ScrollTrigger.create({
-                trigger: ".specializations",
-                start: "top bottom",
-                end: "bottom top",
-                scrub: 1,
-                animation: gsap.timeline()
-                    .fromTo(".specializations .section-number", { y: -50, opacity: 0 }, { y: 0, opacity: 0.6 })
-                    .fromTo(".specializations-title", { y: 100, opacity: 0, scale: 0.9 }, { y: 0, opacity: 1, scale: 1 }, 0.1)
-                    .fromTo(".specializations-subtitle", { y: 60, opacity: 0 }, { y: 0, opacity: 0.7 }, 0.2)
-                    .fromTo(".specializations-description", { y: 40, opacity: 0 }, { y: 0, opacity: 0.7 }, 0.3)
-                    .fromTo(".specializations-playground", { y: 80, opacity: 0, scale: 0.95 }, { y: 0, opacity: 1, scale: 1 }, 0.4)
-            });
-
-            // Experiences scrub animations
-            ScrollTrigger.create({
-                trigger: ".experiences",
-                start: "top bottom",
-                end: "bottom top",
-                scrub: 1,
-                animation: gsap.timeline()
-                    .fromTo(".experiences .section-number", { x: -100, opacity: 0 }, { x: 0, opacity: 0.6 })
-                    .fromTo(".experiences .section-title", { y: 100, opacity: 0 }, { y: 0, opacity: 1 }, 0.1)
-                    .fromTo(".experiences .section-description", { x: 100, opacity: 0 }, { x: 0, opacity: 0.7 }, 0.2)
-            });
-
-            // Individual experience items
-            document.querySelectorAll('.experience-item').forEach((item, index) => {
-                ScrollTrigger.create({
-                    trigger: item,
-                    start: "top bottom",
-                    end: "bottom center",
-                    scrub: 1,
-                    animation: gsap.timeline()
-                        .fromTo(item, { x: -100, opacity: 0 }, { x: 0, opacity: 1 })
-                        .fromTo(item.querySelector('.experience-number'), { scale: 0, opacity: 0 }, { scale: 1, opacity: 0.8 }, 0.1)
-                        .fromTo(item.querySelector('.experience-title'), { y: 50, opacity: 0 }, { y: 0, opacity: 1 }, 0.2)
-                        .fromTo(item.querySelector('.experience-arrow'), { scale: 0, rotation: -90 }, { scale: 1, rotation: 0 }, 0.3)
-                        .fromTo(item.querySelector('.experience-description'), { y: 30, opacity: 0 }, { y: 0, opacity: 0.7 }, 0.4)
-                        .fromTo(item.querySelectorAll('.tech-tag'), { y: 20, opacity: 0, stagger: 0.05 }, { y: 0, opacity: 1, stagger: 0.05 }, 0.5)
-                });
-            });
-
-            // Contact section scrub animations
-            ScrollTrigger.create({
-                trigger: ".contact",
-                start: "top bottom",
-                end: "bottom top",
-                scrub: 1,
-                animation: gsap.timeline()
-                    .fromTo(".contact-title", { y: 150, opacity: 0, scale: 0.8 }, { y: 0, opacity: 1, scale: 1 })
-                    .fromTo(".contact-description", { y: 80, opacity: 0 }, { y: 0, opacity: 0.7 }, 0.2)
-                    .fromTo(".contact-email", { y: 60, opacity: 0, scale: 0.9 }, { y: 0, opacity: 1, scale: 1 }, 0.4)
-            });
-
-            // Navigation scrub animation
-            ScrollTrigger.create({
-                trigger: "body",
+                trigger: ".idea-section",
                 start: "top top",
                 end: "bottom bottom",
                 scrub: 2,
-                animation: gsap.fromTo(".nav", 
-                    { y: 0 }, 
-                    { y: -10 }
-                )
+                pin: true,
+                animation: gsap.timeline()
+                    .fromTo(".idea-object", 
+                        { 
+                            scale: 1, 
+                            width: "20px", 
+                            height: "20px", 
+                            borderRadius: "50%" 
+                        }, 
+                        { 
+                            scale: 1, 
+                            width: "600px", 
+                            height: "600px", 
+                            borderRadius: "20px",
+                            ease: "power2.out"
+                        })
+                    .fromTo(".idea-text", 
+                        { scale: 0.8, opacity: 0.7 }, 
+                        { scale: 1.5, opacity: 1, ease: "power2.out" }, 0)
+                    .fromTo(".growing-word", 
+                        { 
+                            scale: 1,
+                            backgroundPosition: "0% 50%"
+                        }, 
+                        { 
+                            scale: 1.8, 
+                            backgroundPosition: "100% 50%",
+                            ease: "power2.out"
+                        }, 0.3)
             });
 
-            // Section counter updates with scrub
+            // Vision section - earlier trigger
+            ScrollTrigger.create({
+                trigger: ".vision",
+                start: "top 90%", // Much earlier!
+                end: "bottom top",
+                scrub: 0.5,
+                animation: gsap.timeline()
+                    .fromTo(".vision .section-number", { x: -50, opacity: 0 }, { x: 0, opacity: 0.6 })
+                    .fromTo(".vision .section-title", { y: 80, opacity: 0 }, { y: 0, opacity: 1 }, 0.1)
+                    .fromTo(".vision .section-description", { x: 50, opacity: 0 }, { x: 0, opacity: 0.7 }, 0.2)
+                    .fromTo(".vision-text", { y: 60, opacity: 0 }, { y: 0, opacity: 1 }, 0.3)
+                    .fromTo(".vision-description", { y: 40, opacity: 0, stagger: 0.1 }, { y: 0, opacity: 0.8, stagger: 0.1 }, 0.4)
+            });
+
+            // Specializations - earlier trigger
+            ScrollTrigger.create({
+                trigger: ".specializations",
+                start: "top 90%", // Much earlier!
+                end: "bottom top",
+                scrub: 0.5,
+                animation: gsap.timeline()
+                    .fromTo(".specializations .section-number", { y: -40, opacity: 0 }, { y: 0, opacity: 0.6 })
+                    .fromTo(".specializations-title", { y: 80, opacity: 0, scale: 0.9 }, { y: 0, opacity: 1, scale: 1 }, 0.1)
+                    .fromTo(".specializations-subtitle", { y: 40, opacity: 0 }, { y: 0, opacity: 0.7 }, 0.2)
+                    .fromTo(".specializations-description", { y: 30, opacity: 0 }, { y: 0, opacity: 0.7 }, 0.3)
+                    .fromTo(".specializations-playground", { y: 60, opacity: 0, scale: 0.95 }, { y: 0, opacity: 1, scale: 1 }, 0.4)
+            });
+
+            // Projects - earlier trigger
+            ScrollTrigger.create({
+                trigger: ".projects",
+                start: "top 90%", // Much earlier!
+                end: "bottom top",
+                scrub: 0.5,
+                animation: gsap.timeline()
+                    .fromTo(".projects .section-number", { x: -50, opacity: 0 }, { x: 0, opacity: 0.6 })
+                    .fromTo(".projects .section-title", { y: 80, opacity: 0 }, { y: 0, opacity: 1 }, 0.1)
+                    .fromTo(".projects .section-description", { x: 50, opacity: 0 }, { x: 0, opacity: 0.7 }, 0.2)
+            });
+
+            // Individual project items - much earlier
+            document.querySelectorAll('.project-item').forEach((item, index) => {
+                ScrollTrigger.create({
+                    trigger: item,
+                    start: "top 95%", // Very early!
+                    end: "bottom 30%",
+                    scrub: 0.5,
+                    animation: gsap.timeline()
+                        .fromTo(item, { x: -80, opacity: 0 }, { x: 0, opacity: 1 })
+                        .fromTo(item.querySelector('.project-number'), { scale: 0, opacity: 0 }, { scale: 1, opacity: 0.8 }, 0.1)
+                        .fromTo(item.querySelector('.project-title'), { y: 40, opacity: 0 }, { y: 0, opacity: 1 }, 0.2)
+                        .fromTo(item.querySelector('.project-arrow'), { scale: 0, rotation: -90 }, { scale: 1, rotation: 0 }, 0.3)
+                        .fromTo(item.querySelector('.project-description'), { y: 20, opacity: 0 }, { y: 0, opacity: 0.7 }, 0.4)
+                        .fromTo(item.querySelectorAll('.tech-tag'), { y: 15, opacity: 0, stagger: 0.03 }, { y: 0, opacity: 1, stagger: 0.03 }, 0.5)
+                });
+            });
+
+            // Contact section - earlier trigger
+            ScrollTrigger.create({
+                trigger: ".contact",
+                start: "top 90%", // Much earlier!
+                end: "bottom top",
+                scrub: 0.5,
+                animation: gsap.timeline()
+                    .fromTo(".contact-title", { y: 100, opacity: 0, scale: 0.9 }, { y: 0, opacity: 1, scale: 1 })
+                    .fromTo(".contact-description", { y: 60, opacity: 0 }, { y: 0, opacity: 0.7 }, 0.2)
+                    .fromTo(".contact-email", { y: 40, opacity: 0, scale: 0.95 }, { y: 0, opacity: 1, scale: 1 }, 0.4)
+            });
+
+            // Section counter updates
             const sections = document.querySelectorAll('section');
             const sectionCounter = document.querySelector('.section-counter');
             
             sections.forEach((section, index) => {
                 ScrollTrigger.create({
                     trigger: section,
-                    start: 'top 60%',
-                    end: 'bottom 40%',
-                    scrub: 1,
+                    start: 'top 50%',
+                    end: 'bottom 50%',
                     onUpdate: (self) => {
                         if (self.isActive) {
-                            sectionCounter.textContent = `0${index + 1} / 05`;
+                            sectionCounter.textContent = `0${index + 1} / 06`;
                         }
-                    }
-                });
-            });
-
-            // Number counters (trigger once when in view)
-            gsap.utils.toArray('[data-count]').forEach(counter => {
-                const target = parseInt(counter.getAttribute('data-count'));
-                
-                ScrollTrigger.create({
-                    trigger: counter,
-                    start: 'top 80%',
-                    onEnter: () => {
-                        gsap.to({ count: 0 }, {
-                            count: target,
-                            duration: 2,
-                            ease: 'power2.out',
-                            onUpdate: function() {
-                                counter.textContent = Math.floor(this.targets()[0].count);
-                            }
-                        });
                     }
                 });
             });
@@ -1637,7 +1732,7 @@
             trigger: 'body',
             start: 'top top',
             end: 'bottom bottom',
-            scrub: 0.5,
+            scrub: 0.3,
             onUpdate: self => {
                 gsap.to('.progress', {
                     width: `${self.progress * 100}%`,
