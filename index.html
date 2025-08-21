@@ -340,29 +340,32 @@
             will-change: width;
         }
 
-        /* BIG MORPHING TEXT SECTION */
+        /* PINNED EXECUTION TEXT SECTION */
         .big-text-section {
-            min-height: 100vh;
+            min-height: 300vh; /* Increased height for scroll distance */
             position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
             background: var(--darker);
-            padding: clamp(4rem, 8vw, 6rem) clamp(1.5rem, 4vw, 3rem);
+            overflow: hidden;
         }
 
         .big-text-container {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-align: center;
             width: 100%;
             max-width: 1400px;
             margin: 0 auto;
+            padding: clamp(2rem, 4vw, 3rem);
         }
 
         .morphing-text {
-            font-size: clamp(4rem, 15vw, 12rem);
+            font-size: clamp(3rem, 12vw, 10rem);
             font-weight: 900;
-            line-height: 0.8;
+            line-height: 0.85;
             letter-spacing: -0.05em;
             text-transform: uppercase;
             will-change: transform;
@@ -373,11 +376,73 @@
             display: block;
             position: relative;
             overflow: hidden;
+            margin-bottom: clamp(0.2rem, 1vw, 0.5rem);
         }
 
         .morphing-text .word span {
             display: inline-block;
             will-change: transform;
+            color: var(--light);
+        }
+
+        /* Special styling for BOLD EXECUTION */
+        .execution-line {
+            position: relative;
+            display: block;
+        }
+
+        .execution-line .word {
+            display: inline-block;
+            margin-right: clamp(1rem, 3vw, 2rem);
+            margin-bottom: 0;
+        }
+
+        .execution-line .word:last-child {
+            margin-right: 0;
+        }
+
+        /* Fill effect for BOLD EXECUTION */
+        .fill-text {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .fill-text .text-white {
+            position: relative;
+            z-index: 2;
+            color: var(--light);
+        }
+
+        .fill-text .text-orange {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 3;
+            background: var(--gradient);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 100% 100%;
+            clip-path: inset(0 100% 0 0);
+            will-change: clip-path;
+        }
+
+        @media (max-width: 768px) {
+            .big-text-section {
+                min-height: 250vh;
+            }
+            
+            .morphing-text {
+                font-size: clamp(2.5rem, 10vw, 8rem);
+                line-height: 0.9;
+            }
+            
+            .execution-line .word {
+                display: block;
+                margin-right: 0;
+                margin-bottom: clamp(0.2rem, 1vw, 0.5rem);
+            }
         }
 
         /* FROM LITTLE IDEA TO SOMETHING BIG SECTION - SCROLL JACKING */
@@ -959,10 +1024,6 @@
                 height: 70px;
             }
 
-            .big-text-section {
-                min-height: 80vh;
-            }
-
             .idea-section {
                 min-height: 300vh;
             }
@@ -1017,7 +1078,7 @@
     </section>
 
     <!-- Big Morphing Text Section -->
-    <section class="big-text-section">
+    <section class="big-text-section" id="execution-section">
         <div class="big-text-container">
             <div class="morphing-text">
                 <div class="word">
@@ -1029,11 +1090,15 @@
                 <div class="word">
                     <span>DESERVE</span>
                 </div>
-                <div class="word">
-                    <span>BOLD</span>
-                </div>
-                <div class="word">
-                    <span>EXECUTION</span>
+                <div class="execution-line">
+                    <div class="word fill-text">
+                        <span class="text-white">BOLD</span>
+                        <span class="text-orange">BOLD</span>
+                    </div>
+                    <div class="word fill-text">
+                        <span class="text-white">EXECUTION</span>
+                        <span class="text-orange">EXECUTION</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1579,28 +1644,105 @@
                     .fromTo(".cta-button", { y: 30, opacity: 0, scale: 0.95 }, { y: 0, opacity: 1, scale: 1 }, 0.5)
             });
 
-            // Big morphing text section - Fixed timing so it's readable while in view
+            // Big morphing text section - PINNED with fill effect
             ScrollTrigger.create({
                 trigger: ".big-text-section",
-                start: "top 80%",
-                end: "bottom 20%",
-                scrub: 0.5,
-                animation: gsap.timeline()
-                    .fromTo(".morphing-text .word:nth-child(1) span", 
-                        { y: 100, opacity: 0, rotationX: -45 }, 
-                        { y: 0, opacity: 1, rotationX: 0 })
-                    .fromTo(".morphing-text .word:nth-child(2) span", 
-                        { y: 100, opacity: 0, rotationX: -45 }, 
-                        { y: 0, opacity: 1, rotationX: 0 }, 0.1)
-                    .fromTo(".morphing-text .word:nth-child(3) span", 
-                        { y: 100, opacity: 0, rotationX: -45 }, 
-                        { y: 0, opacity: 1, rotationX: 0 }, 0.2)
-                    .fromTo(".morphing-text .word:nth-child(4) span", 
-                        { y: 100, opacity: 0, rotationX: -45 }, 
-                        { y: 0, opacity: 1, rotationX: 0 }, 0.3)
-                    .fromTo(".morphing-text .word:nth-child(5) span", 
-                        { y: 100, opacity: 0, rotationX: -45 }, 
-                        { y: 0, opacity: 1, rotationX: 0 }, 0.4)
+                start: "top top",
+                end: "bottom bottom",
+                pin: ".big-text-container",
+                scrub: 1,
+                onUpdate: (self) => {
+                    // First phase: Animate in the text
+                    if (self.progress < 0.4) {
+                        const progress = self.progress / 0.4;
+                        gsap.to(".morphing-text .word:nth-child(1) span", {
+                            y: (1 - progress) * 100,
+                            opacity: progress,
+                            rotationX: (1 - progress) * -45,
+                            duration: 0.1,
+                            ease: "none"
+                        });
+                        gsap.to(".morphing-text .word:nth-child(2) span", {
+                            y: (1 - progress) * 100,
+                            opacity: progress,
+                            rotationX: (1 - progress) * -45,
+                            duration: 0.1,
+                            ease: "none"
+                        });
+                        gsap.to(".morphing-text .word:nth-child(3) span", {
+                            y: (1 - progress) * 100,
+                            opacity: progress,
+                            rotationX: (1 - progress) * -45,
+                            duration: 0.1,
+                            ease: "none"
+                        });
+                        gsap.to(".execution-line .fill-text .text-white", {
+                            y: (1 - progress) * 100,
+                            opacity: progress,
+                            rotationX: (1 - progress) * -45,
+                            duration: 0.1,
+                            ease: "none"
+                        });
+                        gsap.to(".execution-line .fill-text .text-orange", {
+                            y: (1 - progress) * 100,
+                            opacity: progress,
+                            rotationX: (1 - progress) * -45,
+                            duration: 0.1,
+                            ease: "none"
+                        });
+                    }
+                    
+                    // Second phase: Fill animation for BOLD EXECUTION
+                    if (self.progress >= 0.4) {
+                        const fillProgress = (self.progress - 0.4) / 0.6;
+                        const clipValue = Math.max(0, 100 - (fillProgress * 100));
+                        
+                        gsap.to(".fill-text .text-orange", {
+                            clipPath: `inset(0 ${clipValue}% 0 0)`,
+                            duration: 0.1,
+                            ease: "none"
+                        });
+                        
+                        // Responsive scale effect - more conservative on desktop
+                        const isDesktop = window.innerWidth > 768;
+                        const executionScaleAmount = isDesktop ? 0.15 : 0.25; // Less growth on desktop
+                        const textScaleAmount = isDesktop ? 0.1 : 0.15; // Less additional scale on desktop
+                        const shrinkAmount = isDesktop ? 0.08 : 0.12; // Less shrinking on desktop
+                        
+                        // Progressive scale effect for execution line
+                        const scaleValue = 1 + (fillProgress * executionScaleAmount);
+                        gsap.to(".execution-line", {
+                            scale: scaleValue,
+                            duration: 0.1,
+                            ease: "none"
+                        });
+                        
+                        // Additional scale effect specifically for the fill text elements
+                        gsap.to(".fill-text", {
+                            scale: 1 + (fillProgress * textScaleAmount),
+                            duration: 0.1,
+                            ease: "none"
+                        });
+                        
+                        // Shrink the first three words to prevent overlap - responsive shrinking
+                        const shrinkValue = 1 - (fillProgress * shrinkAmount);
+                        gsap.to(".morphing-text .word:nth-child(1) span", {
+                            scale: shrinkValue,
+                            duration: 0.1,
+                            ease: "none"
+                        });
+                        gsap.to(".morphing-text .word:nth-child(2) span", {
+                            scale: shrinkValue,
+                            duration: 0.1,
+                            ease: "none"
+                        });
+                        gsap.to(".morphing-text .word:nth-child(3) span", {
+                            scale: shrinkValue,
+                            duration: 0.1,
+                            ease: "none"
+                        });
+                    }
+                }
             });
 
             // From little idea to something big - SCROLL JACKING EFFECT!
